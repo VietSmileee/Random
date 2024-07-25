@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS2 Utility Trainer</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #282c34;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #61dafb;
+            border: none;
+            border-radius: 5px;
+        }
+        .utility {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="utility" id="utilityDisplay">Press "Start" to begin!</div>
+    <button class="button" id="startButton" onclick="startRandomizing()">Start</button>
+    <button class="button" id="stopButton" onclick="stopRandomizing()" style="display: none;">Stop</button>
+
+    <script>
+        const utilities = ["Molotov", "Flash", "Grenade", "Smoke"];
+        let intervalId;
+
+        function showRandomUtility() {
+            const randomUtility = utilities[Math.floor(Math.random() * utilities.length)];
+            document.getElementById('utilityDisplay').textContent = randomUtility;
+        }
+
+        function startRandomizing() {
+            intervalId = setInterval(showRandomUtility, 1000); // Change 1000 to any interval in milliseconds
+            document.getElementById('startButton').style.display = 'none';
+            document.getElementById('stopButton').style.display = 'inline';
+        }
+
+        function stopRandomizing() {
+            clearInterval(intervalId);
+            document.getElementById('startButton').style.display = 'inline';
+            document.getElementById('stopButton').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
